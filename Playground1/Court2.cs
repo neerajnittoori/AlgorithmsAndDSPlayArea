@@ -19,27 +19,26 @@ namespace Playground1 {
              {
                  for(int j = 0; j < grid[0].Length; j++)
                  {
-                     var curArea = ExploreIslandAndCalculateArea(grid, i, j, 0);
+                     var curArea = ExploreIslandAndCalculateArea(grid, i, j);
                      maxArea = Math.Max(maxArea, curArea);
                  }
              }
              return maxArea;
         }
 
-        private int ExploreIslandAndCalculateArea(int[][] grid, int i, int j, int currentAreaSize) {
+        private int ExploreIslandAndCalculateArea(int[][] grid, int i, int j) {
             if (i < 0 || j < 0 || i >=  grid.Length || j >= grid[0].Length || grid[i][j] != 1) return 0;
-            currentAreaSize++;
+
             grid[i][j] = 2;
             var left = j - 1;
             var right = j + 1;
             var top = i - 1;
             var bottom = i + 1;
-            currentAreaSize += ExploreIslandAndCalculateArea(grid, i, left, currentAreaSize);
-            currentAreaSize += ExploreIslandAndCalculateArea(grid, i, right, currentAreaSize);
-            currentAreaSize += ExploreIslandAndCalculateArea(grid, top, j, currentAreaSize);
-            currentAreaSize += ExploreIslandAndCalculateArea(grid, bottom, j, currentAreaSize);
-
-            return currentAreaSize;
+            
+            return 1 + ExploreIslandAndCalculateArea(grid, i, left) +
+            ExploreIslandAndCalculateArea(grid, i, right) +
+            ExploreIslandAndCalculateArea(grid, top, j) +
+            ExploreIslandAndCalculateArea(grid, bottom, j);
         }
 
          public int[][] FloodFill(int[][] image, int sr, int sc, int newColor) {

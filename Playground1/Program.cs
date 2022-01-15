@@ -18,6 +18,9 @@ namespace Playground1
 
             var binaryTreeCourt1 = new BinaryTreeCourt1();
             binaryTreeCourt1.Play();
+
+            var court3 = new Court3();
+            court3.Play();
         }
     }
 }

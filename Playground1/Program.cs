@@ -21,6 +21,9 @@ namespace Playground1
 
             var court3 = new Court3();
             court3.Play();
+
+            var court4 = new Court4();
+            court4.Play();
         }
     }
 }
